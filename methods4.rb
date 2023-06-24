@@ -1,8 +1,8 @@
 def age(person) 
-  names = ["mozart", "kant", "beethoven"]
+  names = ["Wolfgang Amadeus Mozart", "Immanuel Kant", "Ludwig van Beethoven"]
   name = person[:name] 
- 
-  if name == "Ludwig van Beethoven" || name == "Immanuel Kant" || name == "Wolfgang Amadeus Mozart"
+  
+  if names.include?(name)
     lifetime =person[:year_died] - person[:year_born]
   else
     puts "Please enter a valid name"
@@ -47,3 +47,4 @@ name_2 = hash_name[number_2]
 comparision(name_1, name_2)
 
 
+#name == "Ludwig van Beethoven" || name == "Immanuel Kant" || name == "Wolfgang Amadeus Mozart" #elegantere version???
