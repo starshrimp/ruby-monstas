@@ -1,15 +1,18 @@
 def age(person) 
   names = ["mozart", "kant", "beethoven"]
-  
-  if person == "mozart" || "kant" || "beethoven"
+  name = person[:name] 
+ 
+  if name == "Ludwig van Beethoven" || name == "Immanuel Kant" || name == "Wolfgang Amadeus Mozart"
     lifetime =person[:year_died] - person[:year_born]
   else
     puts "Please enter a valid name"
   end
 end
 def comparision(person_1, person_2)
-  lifetime_1 =person_1[:year_died] - person_1[:year_born]
-  lifetime_2 =person_2[:year_died] - person_2[:year_born]
+  lifetime_1 = age(person_1)
+  lifetime_2 = age(person_2)
+  puts "#{person_1[:name]} grew #{lifetime_1} years old!"
+  puts "#{person_2[:name]} grew #{lifetime_2} years old!"
   if lifetime_1 > lifetime_2
     puts "#{person_1[:name]} grew older than #{person_2[:name]}!"
   elsif lifetime_1 < lifetime_2
@@ -40,8 +43,7 @@ hash_name = {mozart: mozart, kant: kant, beethoven: beethoven}
 name_1 = hash_name[number_1]
 name_2 = hash_name[number_2]
 
-age(name_1) 
-age(name_2) 
+
 comparision(name_1, name_2)
 
 
