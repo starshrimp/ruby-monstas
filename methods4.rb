@@ -1,13 +1,20 @@
 def age(person) 
   names = ["Wolfgang Amadeus Mozart", "Immanuel Kant", "Ludwig van Beethoven"]
-  name = person[:name] 
   
-  if names.include?(name)
-    lifetime =person[:year_died] - person[:year_born]
-  else
-    puts "Please enter a valid name"
-  end
+  name = person[:name] 
+  lifetime =person[:year_died] - person[:year_born]
 end
+
+def check_name(name_person) 
+  names = ["Wolfgang Amadeus Mozart", "Immanuel Kant", "Ludwig van Beethoven"]
+  names.each do |name_each|
+    if name_each.include?(name_person)
+      return true
+    end
+  end
+  return false
+end
+  
 def comparision(person_1, person_2)
   lifetime_1 = age(person_1)
   lifetime_2 = age(person_2)
@@ -35,16 +42,21 @@ mozart = {
 
 
 puts "Which people's age do you want to compare: Beethoven, Kant, Mozart?"
-number_1 = gets.chomp.downcase.to_sym
-number_2= gets.chomp.downcase.to_sym
+number_1 = gets.chomp
+number_2= gets.chomp
 
-names = [mozart, kant, beethoven]
-hash_name = {mozart: mozart, kant: kant, beethoven: beethoven}
-name_1 = hash_name[number_1]
-name_2 = hash_name[number_2]
+check_name(number_1)
+check_name(number_2)
 
-
-comparision(name_1, name_2)
-
-
-#name == "Ludwig van Beethoven" || name == "Immanuel Kant" || name == "Wolfgang Amadeus Mozart" #elegantere version???
+if check_name(number_1.capitalize) &&  check_name(number_2.capitalize) 
+  number_1 = number_1.to_sym.downcase
+  number_2 = number_2.to_sym.downcase
+  names = [mozart, kant, beethoven]
+  hash_name = {mozart: mozart, kant: kant, beethoven: beethoven}
+  name_1 = hash_name[number_1]
+  name_2 = hash_name[number_2]
+  
+  comparision(name_1, name_2)
+else
+  puts "Please enter a valid name"
+end
